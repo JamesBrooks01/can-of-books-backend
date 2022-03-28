@@ -23,13 +23,15 @@
 - Name of feature: Repo Set-Up
   - Estimate of time needed to complete: 1.5 Hours to 2 Hours.
   - Start time: 2:42pm
-  - Finish time: _____
-  - Actual time needed to complete: _____
+  - Finish time: 3:12
+  - Actual time needed to complete: 35
+
 - Name of feature: Storage
-  - Estimate of time needed to complete: _____
-  - Start time: _____
+  - Estimate of time needed to complete: 30
+  - Start time: 3:15
   - Finish time: _____
   - Actual time needed to complete: _____
+
 - Name of feature: Book Component
   - Estimate of time needed to complete: _____
   - Start time: _____
