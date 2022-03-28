@@ -29,8 +29,8 @@
 - Name of feature: Storage
   - Estimate of time needed to complete: 30
   - Start time: 3:15
-  - Finish time: _____
-  - Actual time needed to complete: _____
+  - Finish time: 4:10
+  - Actual time needed to complete: 55
 
 - Name of feature: Book Component
   - Estimate of time needed to complete: _____
