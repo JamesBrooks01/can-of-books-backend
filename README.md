@@ -19,7 +19,7 @@
 - 03-28-2022 5:10pm - Added Book Carousel and filled it with Data.
 - 03-29-2022 5:26pm - Added Create Functionality.
 - 03-29-2022 6:53pm - Added Delete Functionality.
-
+- 03-30-2022 3:35pm - Added Put Functionality
 
 ## Estimates
 <!-- See below -->
@@ -52,9 +52,8 @@
 - Name of feature: Update
   - Estimate of time needed to complete: 1 hour
   - Start time: 1:40
-  - Finish time: 
-  - Actual time needed to complete:   
-
+  - Finish time: 3:34
+  - Actual time needed to complete: 2 hours
 
 ## Credit and Collaborations
 
