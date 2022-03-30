@@ -49,7 +49,11 @@
   - Start time: 5:30
   - Finish time: 6:53
   - Actual time needed to complete:   1:30
-
+- Name of feature: Update
+  - Estimate of time needed to complete: 1 hour
+  - Start time: 1:40
+  - Finish time: 
+  - Actual time needed to complete:   
 
 
 ## Credit and Collaborations

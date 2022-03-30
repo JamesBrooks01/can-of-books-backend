@@ -28,6 +28,7 @@ app.get('/test', (request, response) => {
 app.get('/books', getBooks);
 app.post('/books', postBooks);
 app.delete('/books/:id', deleteBook);
+app.put('/books/:id', putBook);
 
 async function getBooks(req,res,next){
   try{
@@ -61,6 +62,17 @@ async function deleteBook(req, res, next) {
     console.log(id);
     await book.findByIdAndDelete(id);
     res.send('book deleted');
+  } catch(error) {
+    next(error);
+  }
+}
+
+async function putBook(req, res, next) {
+  // REST verb PUT // Mongoose Model.findByIdAndUpdate
+  try {
+    let id = req.params.id;
+    let updatedBook = await book.findByIdAndUpdate(id, req.body, { new: true, overwrite: true });
+    res.status(200).send(updatedBook);
   } catch(error) {
     next(error);
   }
