@@ -17,6 +17,7 @@ db.once('open', function () {
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 const PORT = process.env.PORT || 3002;
 
@@ -25,19 +26,53 @@ app.get('/test', (request, response) => {
 })
 
 app.get('/books', getBooks);
+app.post('/books', postBooks);
+app.delete('/books/:id', deleteBook);
 
 async function getBooks(req,res,next){
   try{
-    let queryObject = {};
-    if(req.query.email){
-      queryObject = req.query.email;
+    let queryObject = {}; 
+    if(req.query.email){ 
+      queryObject.email = req.query.email;
+      console.log(req.query.email)
     }
     let results = await book.find(queryObject);
+    console.log(results)
     res.status(200).send(results);
   }catch(error){
     next(error);
   };
 };
 
+async function postBooks(req,res,next){
+  console.log(req.body); // contains title, desc, author, email
+  try{
+    let newBook = await book.create(req.body);
+    res.status(200).send(newBook);
+  }catch(error){
+    next(error);
+  }
+}
+
+async function deleteBook(req, res, next) {
+  // REST verb DELETE // Mongoose Model.findByIdAndDelete()
+  let id = req.params.id;
+  try {
+    console.log(id);
+    await book.findByIdAndDelete(id);
+    res.send('book deleted');
+  } catch(error) {
+    next(error);
+  }
+}
+
+app.get('*', (request, response) => {
+  response.status(404).send('Page Doesn\'t Exist');
+})
+
+// error
+app.use((error, req, res, next) => {
+  res.status(500).send(error.message);
+});
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
