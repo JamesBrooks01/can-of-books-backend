@@ -17,6 +17,9 @@
 - 03-28-2022 3:12pm - Finished Repo Set-Up.
 - 03-28-2022 4:10pm - Added Database Storage Functionality.
 - 03-28-2022 5:10pm - Added Book Carousel and filled it with Data.
+- 03-29-2022 5:26pm - Added Create Functionality.
+- 03-29-2022 6:53pm - Added Delete Functionality.
+
 
 ## Estimates
 <!-- See below -->
@@ -36,6 +39,18 @@
   - Start time: 4:30pm
   - Finish time: 5:10pm
   - Actual time needed to complete: 40 Minutes
+- Name of feature: Create
+  - Estimate of time needed to complete: 2 hours
+  - Start time: 4:02
+  - Finish time: 5:26
+  - Actual time needed to complete:  1:30
+- Name of feature: Delete
+  - Estimate of time needed to complete: 2
+  - Start time: 5:30
+  - Finish time: 6:53
+  - Actual time needed to complete:   1:30
+
+
 
 ## Credit and Collaborations
 
