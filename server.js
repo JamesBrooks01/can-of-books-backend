@@ -13,7 +13,6 @@ db.once('open', function () {
   console.log('Mongoose is connected');
 });
 
-
 const app = express();
 
 app.use(cors());
@@ -30,30 +29,30 @@ app.post('/books', postBooks);
 app.delete('/books/:id', deleteBook);
 app.put('/books/:id', putBook);
 
-async function getBooks(req,res,next){
-  try{
-    let queryObject = {}; 
-    if(req.query.email){ 
+async function getBooks(req, res, next) {
+  try {
+    let queryObject = {};
+    if (req.query.email) {
       queryObject.email = req.query.email;
       console.log(req.query.email)
     }
     let results = await book.find(queryObject);
     console.log(results)
     res.status(200).send(results);
-  }catch(error){
+  } catch (error) {
     next(error);
   };
 };
 
-async function postBooks(req,res,next){
+async function postBooks(req, res, next) {
   console.log(req.body); // contains title, desc, author, email
-  try{
+  try {
     let newBook = await book.create(req.body);
     res.status(200).send(newBook);
-  }catch(error){
+  } catch (error) {
     next(error);
-  }
-}
+  };
+};
 
 async function deleteBook(req, res, next) {
   // REST verb DELETE // Mongoose Model.findByIdAndDelete()
@@ -62,7 +61,7 @@ async function deleteBook(req, res, next) {
     console.log(id);
     await book.findByIdAndDelete(id);
     res.send('book deleted');
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
@@ -73,7 +72,7 @@ async function putBook(req, res, next) {
     let id = req.params.id;
     let updatedBook = await book.findByIdAndUpdate(id, req.body, { new: true, overwrite: true });
     res.status(200).send(updatedBook);
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
