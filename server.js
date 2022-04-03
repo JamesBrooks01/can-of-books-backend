@@ -6,6 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose'); // bring in Mongoose.
 const book = require('./models/book')
 mongoose.connect(process.env.DB_URL);
+const verifyUser = require('./auth');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -30,27 +31,37 @@ app.post('/books', postBooks);
 app.delete('/books/:id', deleteBook);
 app.put('/books/:id', putBook);
 
-async function getBooks(req,res,next){
-  try{
-    let queryObject = {}; 
-    if(req.query.email){ 
+
+
+async function getBooks(req, res, next) {
+  verifyUser(req, async (err, user) => {
+    if (err) {
+      console.error(err);
+      res.send('invalid token');
+    } else {
+  try {
+    // console.log(req)
+    let queryObject = {};
+    if (req.query.email) {
       queryObject.email = req.query.email;
-      console.log(req.query.email)
+      console.log(queryObject);
     }
     let results = await book.find(queryObject);
-    console.log(results)
+    // console.log(results)
     res.status(200).send(results);
-  }catch(error){
+  } catch (error) {
     next(error);
   };
-};
+}
+});
+}
 
-async function postBooks(req,res,next){
+async function postBooks(req, res, next) {
   console.log(req.body); // contains title, desc, author, email
-  try{
+  try {
     let newBook = await book.create(req.body);
     res.status(200).send(newBook);
-  }catch(error){
+  } catch (error) {
     next(error);
   }
 }
@@ -62,7 +73,7 @@ async function deleteBook(req, res, next) {
     console.log(id);
     await book.findByIdAndDelete(id);
     res.send('book deleted');
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
@@ -73,7 +84,7 @@ async function putBook(req, res, next) {
     let id = req.params.id;
     let updatedBook = await book.findByIdAndUpdate(id, req.body, { new: true, overwrite: true });
     res.status(200).send(updatedBook);
-  } catch(error) {
+  } catch (error) {
     next(error);
   }
 }
